@@ -1,5 +1,6 @@
 import random
 from PIL import Image,ImageDraw
+import os
 
 items = open("magicitems.txt","r").readlines()
 
@@ -30,6 +31,10 @@ while x <= 100:
     d.text((10,50), nftString, fill=(255,255,255))
     d.text((250,30), "#" + str(x) , fill=(255,255,255))
     
-    img.save("nfts/nft" + str(x) + ".png")
+    try:
+        img.save("nfts/nft" + str(x) + ".png")
+    except:
+        os.mkdir("nfts")
+        img.save("nfts/nft" + str(x) + ".png")
     
     x += 1
